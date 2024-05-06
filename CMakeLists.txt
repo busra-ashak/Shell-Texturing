@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_FLAGS "-g -Wall")
 
 add_executable(shell
-  main.cpp
+  src/main.cpp
 )
 
 target_compile_options(shell PRIVATE -g -O3)
