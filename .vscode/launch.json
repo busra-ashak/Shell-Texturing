@@ -1,0 +1,24 @@
+{
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "shell_debug",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "${workspaceRoot}/build/debug/shell.exe",
+			"cwd": "${workspaceRoot}",
+			"preLaunchTask": "shell_debug"
+		},		
+		{
+			"name": "shell_release",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "${workspaceRoot}/build/release/shell.exe",
+			"cwd": "${workspaceRoot}",
+			"preLaunchTask": "shell_release"
+		}
+	]
+}

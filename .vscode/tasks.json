@@ -1,0 +1,33 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+		"label": "shell_debug",
+		"type": "shell",
+		"command": "ninja shell",
+		"options":
+		{
+			"cwd": "${workspaceFolder}/build/debug"
+		},
+		"group": {
+			"kind": "build",
+			"isDefault": true
+      }
+    },
+    {
+		"label": "shell_release",
+		"type": "shell",
+		"command": "ninja shell",
+		"options":
+		{
+			"cwd": "${workspaceFolder}/build/release"
+		},
+		"group": {
+			"kind": "build",
+			"isDefault": true
+      }
+    },
+  ]
+}
