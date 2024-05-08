@@ -1,6 +1,7 @@
 #include <cstdio>
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
+#include "buffer.h"
 
 int main()
 {
@@ -26,7 +27,7 @@ int main()
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
-    
+
     glfwDestroyWindow(window);
     glfwTerminate();
     return 0;
