@@ -9,6 +9,9 @@ add_executable(shell
   src/main.cpp
 )
 
+add_subdirectory(lib)
+
+target_link_libraries(shell PRIVATE glfw glad glm)
 
 if(${CMAKE_BUILD_TYPE} STREQUAL "Debug")
     target_compile_options(shell PRIVATE -g -O0)
