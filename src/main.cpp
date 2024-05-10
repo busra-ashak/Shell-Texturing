@@ -31,7 +31,7 @@ int main()
     success &= vertex_shader.compile();
     success &= fragment_shader.compile();
 
-    shader_program program;
+    shader_program program = create_shader_program();
     program.add(vertex_shader);
     program.add(fragment_shader);
     success &= program.link();

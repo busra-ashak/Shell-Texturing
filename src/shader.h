@@ -13,6 +13,7 @@ struct shader
 
 struct shader_program
 {
+    GLuint val;
     std::vector<shader> shaders;
 
     bool link();
@@ -21,3 +22,4 @@ struct shader_program
 };
 
 shader create_shader(std::string path, GLenum type);
+shader_program create_shader_program();
