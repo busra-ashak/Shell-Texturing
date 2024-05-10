@@ -7,6 +7,18 @@
 },
 {
   "directory": "D:/Dersler-20210512T064119Z-001/Dersler/2024_Spring/Shell-Texturing/build/debug",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -ID:/Dersler-20210512T064119Z-001/Dersler/2024_Spring/Shell-Texturing/lib/glfw/include -ID:/Dersler-20210512T064119Z-001/Dersler/2024_Spring/Shell-Texturing/lib/glad/include -ID:/Dersler-20210512T064119Z-001/Dersler/2024_Spring/Shell-Texturing/lib/glm -g -Wall -g -std=gnu++17 -g -O0 -o CMakeFiles\\shell.dir\\src\\buffer.cpp.obj -c D:\\Dersler-20210512T064119Z-001\\Dersler\\2024_Spring\\Shell-Texturing\\src\\buffer.cpp",
+  "file": "D:\\Dersler-20210512T064119Z-001\\Dersler\\2024_Spring\\Shell-Texturing\\src\\buffer.cpp",
+  "output": "CMakeFiles\\shell.dir\\src\\buffer.cpp.obj"
+},
+{
+  "directory": "D:/Dersler-20210512T064119Z-001/Dersler/2024_Spring/Shell-Texturing/build/debug",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -ID:/Dersler-20210512T064119Z-001/Dersler/2024_Spring/Shell-Texturing/lib/glfw/include -ID:/Dersler-20210512T064119Z-001/Dersler/2024_Spring/Shell-Texturing/lib/glad/include -ID:/Dersler-20210512T064119Z-001/Dersler/2024_Spring/Shell-Texturing/lib/glm -g -Wall -g -std=gnu++17 -g -O0 -o CMakeFiles\\shell.dir\\src\\shader.cpp.obj -c D:\\Dersler-20210512T064119Z-001\\Dersler\\2024_Spring\\Shell-Texturing\\src\\shader.cpp",
+  "file": "D:\\Dersler-20210512T064119Z-001\\Dersler\\2024_Spring\\Shell-Texturing\\src\\shader.cpp",
+  "output": "CMakeFiles\\shell.dir\\src\\shader.cpp.obj"
+},
+{
+  "directory": "D:/Dersler-20210512T064119Z-001/Dersler/2024_Spring/Shell-Texturing/build/debug",
   "command": "C:\\msys64\\mingw64\\bin\\gcc.exe -ID:/Dersler-20210512T064119Z-001/Dersler/2024_Spring/Shell-Texturing/lib/glad/include -g -o lib\\CMakeFiles\\glad.dir\\glad\\src\\glad.c.obj -c D:\\Dersler-20210512T064119Z-001\\Dersler\\2024_Spring\\Shell-Texturing\\lib\\glad\\src\\glad.c",
   "file": "D:\\Dersler-20210512T064119Z-001\\Dersler\\2024_Spring\\Shell-Texturing\\lib\\glad\\src\\glad.c",
   "output": "lib\\CMakeFiles\\glad.dir\\glad\\src\\glad.c.obj"

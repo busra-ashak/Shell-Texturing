@@ -8,6 +8,7 @@ set(CMAKE_CXX_FLAGS "-g -Wall")
 add_executable(shell
   src/main.cpp
   src/buffer.cpp
+  src/shader.cpp
 )
 
 add_subdirectory(lib)

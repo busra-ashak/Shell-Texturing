@@ -1,7 +1,9 @@
+#include <cassert>
 #include <cstdio>
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 #include "buffer.h"
+#include "shader.h"
 
 int main()
 {
@@ -20,6 +22,21 @@ int main()
     {
         return errGL;
     }
+
+    shader vertex_shader = create_shader("./src/vertex_shader.glsl", GL_VERTEX_SHADER);
+    shader fragment_shader = create_shader("./src/fragment_shader.glsl", GL_FRAGMENT_SHADER);
+
+    bool success = true;
+
+    success &= vertex_shader.compile();
+    success &= fragment_shader.compile();
+
+    shader_program program;
+    program.add(vertex_shader);
+    program.add(fragment_shader);
+    success &= program.link();
+    success &= program.validate();
+    if(!success) std::printf("fail");
 
     while(!glfwWindowShouldClose(window))
     {
