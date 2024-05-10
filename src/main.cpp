@@ -1,4 +1,3 @@
-#include <cassert>
 #include <cstdio>
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
@@ -13,6 +12,9 @@ int main()
     {
         return -2;
     }
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     GLFWwindow* window = glfwCreateWindow(640, 480, "Grass", NULL, NULL);
     glfwMakeContextCurrent(window);
@@ -25,22 +27,28 @@ int main()
 
     shader vertex_shader = create_shader("./src/vertex_shader.glsl", GL_VERTEX_SHADER);
     shader fragment_shader = create_shader("./src/fragment_shader.glsl", GL_FRAGMENT_SHADER);
+    shader_program program = create_shader_program();
 
     bool success = true;
 
     success &= vertex_shader.compile();
     success &= fragment_shader.compile();
-
-    shader_program program = create_shader_program();
     program.add(vertex_shader);
     program.add(fragment_shader);
     success &= program.link();
     success &= program.validate();
-    if(!success) std::printf("fail");
+
+    if(!success) std::printf("failed");
+
+    GLuint vao;
+    glGenVertexArrays(1, &vao);
 
     while(!glfwWindowShouldClose(window))
     {
         glClear(GL_COLOR_BUFFER_BIT);
+        glBindVertexArray(vao);
+        glUseProgram(program.val);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
