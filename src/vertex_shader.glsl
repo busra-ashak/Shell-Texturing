@@ -1,10 +1,13 @@
 #version 450 core
 
-const vec3 triangles[3] = vec3[](
-    vec3(-0.5, -0.5, 0.0), vec3(0.5, -0.5, 0.0), vec3(-0.5f, 0.5, 0.0)
- );
+layout(std430, binding = 0) buffer vertexBuffer
+{
+    vec3 vertices[];
+};
 
 void main()
 {
-    gl_Position = vec4(triangles[gl_VertexID], 1.0f);
+    vec4 pos = vec4(vertices[gl_VertexID%6], 1.0f);
+    pos.y += gl_VertexID/6;
+    gl_Position = pos;
 }

@@ -4,6 +4,7 @@
 #include "buffer.h"
 #include "shader.h"
 #include "renderer.h"
+#include "glm/glm.hpp"
 
 int main()
 {
@@ -46,11 +47,20 @@ int main()
     glBindVertexArray(vao);
     glUseProgram(program.val);
     renderer rend;
+    std::vector<glm::vec4> triangles({
+        glm::vec4(-0.5, -0.5, 0.0, 0), glm::vec4(0.5, -0.5, 0.0, 0), glm::vec4(-0.5f, 0.5, 0.0, 0),
+        glm::vec4(-0.5f, 0.5, 0.0, 0), glm::vec4(0.5, -0.5, 0.0, 0), glm::vec4(0.5, 0.5, 0.0, 0)
+    });
+    
+    size_t size = sizeof(glm::vec4)*triangles.size();
+    GLuint buff = create_buffer(sizeof(glm::vec4)*triangles.size());
+    write_buffer(buff, triangles.data(), size);
+    rend.bind_vertex_buffer(buff);
 
     while(!glfwWindowShouldClose(window))
     {
         glClear(GL_COLOR_BUFFER_BIT);
-        rend.draw_planes(1);
+        rend.draw_planes(4);
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
