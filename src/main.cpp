@@ -3,6 +3,7 @@
 #include "GLFW/glfw3.h"
 #include "buffer.h"
 #include "shader.h"
+#include "renderer.h"
 
 int main()
 {
@@ -42,13 +43,14 @@ int main()
 
     GLuint vao;
     glGenVertexArrays(1, &vao);
+    glBindVertexArray(vao);
+    glUseProgram(program.val);
+    renderer rend;
 
     while(!glfwWindowShouldClose(window))
     {
         glClear(GL_COLOR_BUFFER_BIT);
-        glBindVertexArray(vao);
-        glUseProgram(program.val);
-        glDrawArrays(GL_TRIANGLES, 0, 3);
+        rend.draw_planes(1);
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
