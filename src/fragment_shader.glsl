@@ -2,7 +2,7 @@
 
 void main()
 {
-    gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+    gl_FragColor = vec4(0.2, 0.6, 0.2, 1.0);
 }
 
 /* float rand(float n){return fract(sin(n) * 43758.5453123);}
