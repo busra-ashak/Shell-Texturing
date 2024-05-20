@@ -1,6 +1,12 @@
 #include "glad/glad.h"
 
-GLuint create_buffer(unsigned int size);
-void destroy_buffer(GLuint buff);
-void write_buffer(GLuint buff, void* data, size_t size);
-void bind_buffer(GLuint buff, GLuint slot);
+struct buffer {
+    GLuint data;
+    bool dynamic;
+    void* dynamic_data = nullptr;
+};
+
+buffer create_buffer(unsigned int size, bool dynamic=false);
+void destroy_buffer(buffer buff);
+void write_buffer(buffer buff, void* data, size_t size);
+void bind_buffer(buffer buff, GLuint slot);

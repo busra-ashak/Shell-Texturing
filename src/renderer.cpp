@@ -1,5 +1,4 @@
 #include "renderer.h"
-#include "buffer.h"
 
 renderer::renderer()
 {
@@ -14,7 +13,7 @@ void renderer::draw_planes(unsigned int planeNum)
     glDrawArrays(GL_TRIANGLES, 0, planeNum*2*3);
 }
 
-void renderer::bind_vertex_buffer(GLuint buff)
+void renderer::bind_vertex_buffer(buffer buff)
 {
     bind_buffer(buff, 0);
 }

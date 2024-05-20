@@ -1,7 +1,6 @@
 #include <cstdio>
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
-#include "buffer.h"
 #include "shader.h"
 #include "renderer.h"
 #include "glm/glm.hpp"
@@ -53,7 +52,7 @@ int main()
     });
     
     size_t size = sizeof(glm::vec4)*triangles.size();
-    GLuint buff = create_buffer(sizeof(glm::vec4)*triangles.size());
+    buffer buff = create_buffer(sizeof(glm::vec4)*triangles.size());
     write_buffer(buff, triangles.data(), size);
     rend.bind_vertex_buffer(buff);
 
