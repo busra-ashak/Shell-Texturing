@@ -5,6 +5,12 @@
 #include "renderer.h"
 #include "glm/glm.hpp"
 
+renderer rend;
+void key_callback(GLFWwindow* wnd, int key, int scancode, int action, int mods)
+{
+    rend.cam.handle_input(key);
+}
+
 int main()
 {
 
@@ -25,6 +31,7 @@ int main()
     {
         return errGL;
     }
+    rend.setup();
 
     shader vertex_shader = create_shader("./src/vertex_shader.glsl", GL_VERTEX_SHADER);
     shader fragment_shader = create_shader("./src/fragment_shader.glsl", GL_FRAGMENT_SHADER);
@@ -45,7 +52,6 @@ int main()
     glGenVertexArrays(1, &vao);
     glBindVertexArray(vao);
     glUseProgram(program.val);
-    renderer rend;
     std::vector<glm::vec4> triangles({
         glm::vec4(-0.5, -0.5, 0.0, 0), glm::vec4(0.5, -0.5, 0.0, 0), glm::vec4(-0.5f, 0.5, 0.0, 0),
         glm::vec4(-0.5f, 0.5, 0.0, 0), glm::vec4(0.5, -0.5, 0.0, 0), glm::vec4(0.5, 0.5, 0.0, 0)
@@ -55,6 +61,8 @@ int main()
     buffer buff = create_buffer(sizeof(glm::vec4)*triangles.size());
     write_buffer(buff, triangles.data(), size);
     rend.bind_vertex_buffer(buff);
+
+    glfwSetKeyCallback(window, key_callback);
 
     while(!glfwWindowShouldClose(window))
     {

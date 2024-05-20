@@ -11,4 +11,5 @@ struct camera
 
     glm::mat4 get_view();
     glm::mat4 get_projection();
+    void handle_input(int key);
 };

@@ -1,4 +1,5 @@
 #include "camera.h"
+#include "GLFW/glfw3.h"
 #include "glm/ext/matrix_clip_space.hpp"
 #include "glm/ext/matrix_transform.hpp"
 
@@ -15,4 +16,33 @@ glm::mat4 camera::get_view()
 glm::mat4 camera::get_projection()
 {
     return glm::perspective(fov, aspect_ratio, near_clip, far_clip);
+}
+
+void camera::handle_input(int key)
+{
+    constexpr float speed = 0.2f;
+        if(key == GLFW_KEY_W)
+        {
+            position += glm::vec3(0.0f, 0.0f, -speed);
+        }
+        else if(key == GLFW_KEY_S)
+        {
+            position += glm::vec3(0.0f, 0.0f, speed);
+        }
+        else if(key == GLFW_KEY_A)
+        {
+            position += glm::vec3(-speed, 0.0f, 0.0f);
+        }
+        else if(key == GLFW_KEY_D)
+        {
+            position += glm::vec3(speed, 0.0f, 0.0f);
+        }
+        else if(key == GLFW_KEY_SPACE)
+        {
+            position += glm::vec3(0.0f, speed, 0.0f);
+        }
+        else if(key == GLFW_KEY_LEFT_SHIFT)
+        {
+            position += glm::vec3(0.0f, -speed, 0.0f);
+        }
 }
