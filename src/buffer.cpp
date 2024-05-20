@@ -22,7 +22,7 @@ void destroy_buffer(buffer buff)
     glDeleteBuffers(1, &buff.data);
 }
 
-void write_buffer(buffer buff, void* data, size_t size)
+void write_buffer(buffer& buff, void* data, size_t size)
 {
     if(!buff.dynamic)
     {
@@ -34,7 +34,7 @@ void write_buffer(buffer buff, void* data, size_t size)
     {
         if(buff.dynamic_data == nullptr)
         {
-            buff.dynamic_data = glMapNamedBufferRange(buff.data, 0, size, GL_DYNAMIC_STORAGE_BIT | GL_MAP_READ_BIT | GL_MAP_WRITE_BIT | GL_MAP_PERSISTENT_BIT | GL_MAP_COHERENT_BIT);
+            buff.dynamic_data = glMapNamedBufferRange(buff.data, 0, size, GL_MAP_READ_BIT | GL_MAP_WRITE_BIT | GL_MAP_PERSISTENT_BIT | GL_MAP_COHERENT_BIT);
         }
         memcpy(buff.dynamic_data, data, size);
     }

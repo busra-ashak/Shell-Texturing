@@ -10,6 +10,7 @@ add_executable(shell
   src/buffer.cpp
   src/shader.cpp
   src/renderer.cpp
+  src/camera.cpp
 )
 
 add_subdirectory(lib)
