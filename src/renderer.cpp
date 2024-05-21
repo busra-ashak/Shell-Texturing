@@ -11,17 +11,22 @@ renderer::renderer()
 void renderer::setup()
 {
     cam_buffer = create_buffer(2*sizeof(glm::mat4), true);
+    std::vector<glm::vec4> triangles({
+        glm::vec4(-0.5, -0.5, 0.0, 0), glm::vec4(0.5, -0.5, 0.0, 0), glm::vec4(-0.5f, 0.5, 0.0, 0),
+        glm::vec4(-0.5f, 0.5, 0.0, 0), glm::vec4(0.5, -0.5, 0.0, 0), glm::vec4(0.5, 0.5, 0.0, 0)
+    });
+    
+    size_t size = sizeof(glm::vec4)*triangles.size();
+    vertex_buffer = create_buffer(sizeof(glm::vec4)*triangles.size());
+    write_buffer(vertex_buffer, triangles.data(), size);
+
+    bind_buffer(vertex_buffer, 0);
+    bind_buffer(cam_buffer, 1);
 }
 
 void renderer::draw_planes(unsigned int planeNum)
 {
-    bind_buffer(cam_buffer, 1);
     glDrawArrays(GL_TRIANGLES, 0, planeNum*2*3);
-}
-
-void renderer::bind_vertex_buffer(buffer buff)
-{
-    bind_buffer(buff, 0);
 }
 
 void renderer::update()

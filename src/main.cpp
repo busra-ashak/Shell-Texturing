@@ -52,15 +52,6 @@ int main()
     glGenVertexArrays(1, &vao);
     glBindVertexArray(vao);
     glUseProgram(program.val);
-    std::vector<glm::vec4> triangles({
-        glm::vec4(-0.5, -0.5, 0.0, 0), glm::vec4(0.5, -0.5, 0.0, 0), glm::vec4(-0.5f, 0.5, 0.0, 0),
-        glm::vec4(-0.5f, 0.5, 0.0, 0), glm::vec4(0.5, -0.5, 0.0, 0), glm::vec4(0.5, 0.5, 0.0, 0)
-    });
-    
-    size_t size = sizeof(glm::vec4)*triangles.size();
-    buffer buff = create_buffer(sizeof(glm::vec4)*triangles.size());
-    write_buffer(buff, triangles.data(), size);
-    rend.bind_vertex_buffer(buff);
 
     glfwSetKeyCallback(window, key_callback);
 
