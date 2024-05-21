@@ -31,6 +31,7 @@ int main()
     {
         return errGL;
     }
+    glViewport(0,0,640,480);
     rend.setup();
 
     shader vertex_shader = create_shader("./src/vertex_shader.glsl", GL_VERTEX_SHADER);
@@ -58,6 +59,7 @@ int main()
     while(!glfwWindowShouldClose(window))
     {
         glClear(GL_COLOR_BUFFER_BIT);
+        glClearColor(0,0.8,1,1);
         rend.update();
         rend.draw_planes(4);
         glfwSwapBuffers(window);
