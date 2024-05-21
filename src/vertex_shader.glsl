@@ -1,4 +1,5 @@
 #version 450 core
+layout(location = 0) out uint plane_id;
 
 layout(std430, binding = 0) buffer vertexBuffer
 {
@@ -19,7 +20,7 @@ layout(std430, binding = 2) buffer transformBuffer
 
 void main()
 {
-    int plane_id = gl_VertexID / 6;
+    plane_id = gl_VertexID / 6;
     vec4 pos = vec4(vertices[gl_VertexID%6], 1.0f)*base_transform;
     pos.xyz += spacing*plane_id;
     gl_Position = projection*view*pos;
