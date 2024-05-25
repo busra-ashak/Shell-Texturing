@@ -11,11 +11,6 @@ renderer::renderer()
     shell_num = 6;
 }
 
-struct transform {
-    glm::mat4 base_tranform;
-    glm::vec3 spacing;
-};
-
 void renderer::setup()
 {
     cam_buffer = create_buffer(2*sizeof(glm::mat4), true);
@@ -24,7 +19,7 @@ void renderer::setup()
     trans.base_tranform = glm::rotate(glm::identity<glm::mat4>(), 3.14159f/4.0f, glm::vec3(1.0f, 0.0f, 0.0f));
     trans.spacing = glm::vec3(0,0.01,0);
     transform_buffer = create_buffer(sizeof(trans));
-    write_buffer(transform_buffer, &trans, sizeof(trans));
+    set_transform(trans);
 
     std::vector<glm::vec4> triangles({
         glm::vec4(-0.5, -0.5, 0.0, 0), glm::vec4(0.5, -0.5, 0.0, 0), glm::vec4(-0.5f, 0.5, 0.0, 0),
@@ -50,4 +45,15 @@ void renderer::update()
     temp[0] = cam.get_view();
     temp[1] = cam.get_projection();
     write_buffer(cam_buffer, temp, 2*sizeof(glm::mat4));
+}
+
+void renderer::set_transform(transform t)
+{
+    trans = t;
+    write_buffer(transform_buffer, &trans, sizeof(trans));
+}
+
+const transform& renderer::get_transform() const
+{
+    return trans;
 }

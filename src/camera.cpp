@@ -57,10 +57,14 @@ void camera::handle_input(int key, renderer& rend)
         }
         else if(key == GLFW_KEY_C)
         {
-            position += glm::vec3(0.0f, speed, 0.0f);
+            transform current_transform = rend.get_transform();
+            current_transform.spacing = glm::vec3(0.0, std::min(0.03f, current_transform.spacing.y + 0.005f), 0.0f);
+            rend.set_transform(current_transform);
         }
         else if(key == GLFW_KEY_V)
         {
-            position += glm::vec3(0.0f, -speed, 0.0f);
+            transform current_transform = rend.get_transform();
+            current_transform.spacing = glm::vec3(0.0, std::max(0.0f, current_transform.spacing.y - 0.005f), 0.0f);
+            rend.set_transform(current_transform);
         }
 }
