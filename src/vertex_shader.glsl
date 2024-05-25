@@ -23,7 +23,8 @@ void main()
 {
     plane_id = gl_VertexID / 6;
     position = vertices[gl_VertexID%6];
-    vec4 pos = vec4(vertices[gl_VertexID%6], 1.0f)*base_transform;
-    pos.xyz += spacing*plane_id;
+    vec4 pos = vec4(vertices[gl_VertexID%6], 1.0f);
+    pos.xyz += spacing.xzy*plane_id;
+    pos = pos * base_transform;
     gl_Position = projection*view*pos;
 }

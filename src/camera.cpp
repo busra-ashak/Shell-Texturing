@@ -68,3 +68,16 @@ void camera::handle_input(int key, renderer& rend)
             rend.set_transform(current_transform);
         }
 }
+
+void camera::handle_mouse_events(double xpos, double ypos, bool mouse_pressed)
+{
+    static double old_xpos = xpos, old_ypos = ypos;
+    double delta_x = xpos-old_xpos, delta_y = ypos-old_ypos;
+    if(mouse_pressed) 
+    {
+        rotation.y -= delta_x*0.001;        
+        rotation.x -= delta_y*0.001;
+    }
+    old_xpos = xpos;
+    old_ypos = ypos;
+}

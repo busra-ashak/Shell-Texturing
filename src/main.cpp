@@ -6,9 +6,20 @@
 #include "glm/glm.hpp"
 
 renderer rend;
+bool mouse_pressed = false;
+
 void key_callback(GLFWwindow* wnd, int key, int scancode, int action, int mods)
 {
     rend.cam.handle_input(key, rend);
+}
+void mouse_callback(GLFWwindow* wnd, double xpos, double ypos)
+{
+    rend.cam.handle_mouse_events(xpos, ypos, mouse_pressed);
+}
+void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
+{
+    if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS) mouse_pressed = true;
+    if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_RELEASE) mouse_pressed = false;    
 }
 
 int main()
@@ -55,6 +66,8 @@ int main()
     glUseProgram(program.val);
 
     glfwSetKeyCallback(window, key_callback);
+    glfwSetCursorPosCallback(window, mouse_callback);
+    glfwSetMouseButtonCallback(window, mouse_button_callback);
 
     while(!glfwWindowShouldClose(window))
     {
