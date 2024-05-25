@@ -8,6 +8,7 @@ renderer::renderer()
     cam.aspect_ratio = 640.0f/480.0f;
     cam.near_clip = 0.1f;
     cam.far_clip = 1000.0f;
+    shell_num = 6;
 }
 
 struct transform {
@@ -21,7 +22,7 @@ void renderer::setup()
 
     transform trans;
     trans.base_tranform = glm::rotate(glm::identity<glm::mat4>(), 3.14159f/4.0f, glm::vec3(1.0f, 0.0f, 0.0f));
-    trans.spacing = glm::vec3(0,0.02,0);
+    trans.spacing = glm::vec3(0,0.01,0);
     transform_buffer = create_buffer(sizeof(trans));
     write_buffer(transform_buffer, &trans, sizeof(trans));
 
@@ -38,9 +39,9 @@ void renderer::setup()
     bind_buffer(transform_buffer, 2);
 }
 
-void renderer::draw_planes(unsigned int planeNum)
+void renderer::draw_planes()
 {
-    glDrawArrays(GL_TRIANGLES, 0, planeNum*2*3);
+    glDrawArrays(GL_TRIANGLES, 0, shell_num*2*3);
 }
 
 void renderer::update()

@@ -1,7 +1,9 @@
 #include "camera.h"
+#include "renderer.h"
 #include "GLFW/glfw3.h"
 #include "glm/ext/matrix_clip_space.hpp"
 #include "glm/ext/matrix_transform.hpp"
+#include <algorithm>
 
 glm::mat4 camera::get_view()
 {
@@ -18,9 +20,9 @@ glm::mat4 camera::get_projection()
     return glm::perspective(fov, aspect_ratio, near_clip, far_clip);
 }
 
-void camera::handle_input(int key)
+void camera::handle_input(int key, renderer& rend)
 {
-    constexpr float speed = 0.2f;
+    constexpr float speed = 0.1f;
         if(key == GLFW_KEY_W)
         {
             position += glm::vec3(0.0f, 0.0f, -speed);
@@ -42,6 +44,22 @@ void camera::handle_input(int key)
             position += glm::vec3(0.0f, speed, 0.0f);
         }
         else if(key == GLFW_KEY_LEFT_SHIFT)
+        {
+            position += glm::vec3(0.0f, -speed, 0.0f);
+        }
+        else if(key == GLFW_KEY_Z)
+        {
+            rend.shell_num = std::min((unsigned int) 12, rend.shell_num+1);
+        }
+        else if(key == GLFW_KEY_X)
+        {
+            rend.shell_num = std::max((unsigned int) 1, rend.shell_num-1);
+        }
+        else if(key == GLFW_KEY_C)
+        {
+            position += glm::vec3(0.0f, speed, 0.0f);
+        }
+        else if(key == GLFW_KEY_V)
         {
             position += glm::vec3(0.0f, -speed, 0.0f);
         }

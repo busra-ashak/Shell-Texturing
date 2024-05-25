@@ -1,3 +1,6 @@
+#ifndef SHADER_H
+#define SHADER_H
+
 #include "glad/glad.h"
 #include <string>
 #include <vector>
@@ -23,3 +26,5 @@ struct shader_program
 
 shader create_shader(std::string path, GLenum type);
 shader_program create_shader_program();
+
+#endif

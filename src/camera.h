@@ -1,8 +1,10 @@
+#ifndef CAMERA_H
+#define CAMERA_H
 #include "glm/glm.hpp"
-
+struct renderer;
 struct camera
 {
-    glm::vec3 position{0.0,0.0,5.0};
+    glm::vec3 position{0.0,0.0,0.75};
     glm::vec3 rotation{0.0,0.0,0.0}; //euler angles
     float fov;
     float aspect_ratio;
@@ -11,5 +13,7 @@ struct camera
 
     glm::mat4 get_view();
     glm::mat4 get_projection();
-    void handle_input(int key);
+    void handle_input(int key, renderer& rend);
 };
+
+#endif

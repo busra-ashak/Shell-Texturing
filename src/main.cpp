@@ -8,7 +8,7 @@
 renderer rend;
 void key_callback(GLFWwindow* wnd, int key, int scancode, int action, int mods)
 {
-    rend.cam.handle_input(key);
+    rend.cam.handle_input(key, rend);
 }
 
 int main()
@@ -61,7 +61,7 @@ int main()
         glClear(GL_COLOR_BUFFER_BIT);
         glClearColor(0,0.8,1,1);
         rend.update();
-        rend.draw_planes(10);
+        rend.draw_planes();
         glfwSwapBuffers(window);
         glfwPollEvents();
     }

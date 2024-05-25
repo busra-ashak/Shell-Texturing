@@ -13,7 +13,7 @@ void main()
     float grass_blade_size_pixels = 128.0;
     vec2 quantized_uv = floor(position.xy * grass_blade_size_pixels ) / grass_blade_size_pixels;
     float noisePerFragment = rand(quantized_uv);
-    if(noisePerFragment<0.2 + 0.1*plane_id)
+    if(noisePerFragment<0.15 + 0.07*plane_id)
     {
         if(plane_id == 0)
         {
@@ -26,6 +26,6 @@ void main()
     }
     else
     {
-        gl_FragColor = vec4(0.2,0.5 + 0.05*plane_id,0.2, 1.0);
+        gl_FragColor = vec4(0.2,0.25 + 0.05*plane_id,0.2, 1.0);
     }
 }
