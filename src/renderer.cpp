@@ -21,7 +21,7 @@ void renderer::setup()
 
     transform trans;
     trans.base_tranform = glm::rotate(glm::identity<glm::mat4>(), 3.14159f/4.0f, glm::vec3(1.0f, 0.0f, 0.0f));
-    trans.spacing = glm::vec3(0,0.1,0);
+    trans.spacing = glm::vec3(0,0.02,0);
     transform_buffer = create_buffer(sizeof(trans));
     write_buffer(transform_buffer, &trans, sizeof(trans));
 

@@ -61,7 +61,7 @@ int main()
         glClear(GL_COLOR_BUFFER_BIT);
         glClearColor(0,0.8,1,1);
         rend.update();
-        rend.draw_planes(4);
+        rend.draw_planes(10);
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
