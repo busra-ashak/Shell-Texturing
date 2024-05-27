@@ -22,7 +22,7 @@ glm::mat4 camera::get_projection()
 
 void camera::handle_input(int key, renderer& rend)
 {
-    constexpr float speed = 0.1f;
+    constexpr float speed = 0.05f;
         if(key == GLFW_KEY_W)
         {
             position += glm::vec3(0.0f, 0.0f, -speed);
@@ -49,7 +49,7 @@ void camera::handle_input(int key, renderer& rend)
         }
         else if(key == GLFW_KEY_Z)
         {
-            rend.shell_num = std::min((unsigned int) 12, rend.shell_num+1);
+            rend.shell_num = std::min((unsigned int) 15, rend.shell_num+1);
         }
         else if(key == GLFW_KEY_X)
         {
@@ -58,13 +58,13 @@ void camera::handle_input(int key, renderer& rend)
         else if(key == GLFW_KEY_C)
         {
             transform current_transform = rend.get_transform();
-            current_transform.spacing = glm::vec3(0.0, std::min(0.03f, current_transform.spacing.y + 0.005f), 0.0f);
+            current_transform.spacing = glm::vec3(0.0, std::min(0.03f, current_transform.spacing.y + 0.0025f), 0.0f);
             rend.set_transform(current_transform);
         }
         else if(key == GLFW_KEY_V)
         {
             transform current_transform = rend.get_transform();
-            current_transform.spacing = glm::vec3(0.0, std::max(0.0f, current_transform.spacing.y - 0.005f), 0.0f);
+            current_transform.spacing = glm::vec3(0.0, std::max(0.0f, current_transform.spacing.y - 0.0025f), 0.0f);
             rend.set_transform(current_transform);
         }
 }
