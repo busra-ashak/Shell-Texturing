@@ -47,3 +47,7 @@ cmake --preset release -G <your generator of choice e.g "Ninja">
 ```
 
 After generation, navigate into build/debug or build/release. There you can find your build files (depending on which cmake generator you provided). The executable target is called shell
+
+### Running
+
+The built shell executable must be ran such that the current working directory is the root directory of the project, otherwise you will receive shader failure errors.
