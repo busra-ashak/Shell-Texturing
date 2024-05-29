@@ -11,16 +11,19 @@ float rand(vec2 n)
 
 void main()
 {
-    float grass_blade_size_pixels = 192.0;
-    vec2 quantized_uv = floor(position.xy * grass_blade_size_pixels ) / grass_blade_size_pixels;
+    // grass_blade_count represents the number of potential grass blades in a row
+    const float grass_blade_count = 192.0;
+    vec2 quantized_uv = floor(position.xy * grass_blade_count ) / grass_blade_count;
     float noisePerFragment = rand(quantized_uv);
     const float ambient = 0.4f;
     vec3 grass_colour;
 
+    // is this fragment not part of a grass blade
     if(noisePerFragment<0.10 + 0.05*plane_id)
     {
         if(plane_id == 0)
         {            
+            // the bottom plane (dirt)
             grass_colour = vec3(0.3,0.4,0.2);
         }
         else
@@ -30,6 +33,7 @@ void main()
     }
     else
     {
+        // grass blade
         grass_colour = vec3(0.2,0.25 + 0.05*plane_id,0.2);
     }
 

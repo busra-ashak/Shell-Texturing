@@ -1,0 +1,5 @@
+* linguist-vendored
+src/** linguist-vendored=false
+lib/** linguist-vendored=false
+*.h linguist-language=C++
+*.cpp linguist-language=C++

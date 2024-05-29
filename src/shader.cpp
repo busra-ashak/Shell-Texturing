@@ -3,6 +3,7 @@
 #include <fstream>
 #include <sstream>
 
+// OpenGL boilerplate
 bool shader::compile()
 {
     glCompileShader(val);

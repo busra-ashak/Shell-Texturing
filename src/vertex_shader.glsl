@@ -24,11 +24,16 @@ layout(std430, binding = 2) buffer transformBuffer
 void main()
 {
     plane_id = gl_VertexID / 6;
+
+    // reuse same vertex data for all the planes
     position = vertices[gl_VertexID%6];
     vec4 pos = vec4(vertices[gl_VertexID%6], 1.0f);
     pos.xyz += spacing.xzy*plane_id;
+
+    // model space -> world space
     pos = pos * base_transform;
 
+    // pass these to the fragment shader
     pos_camera_space = view*pos;
     gl_Position = projection*pos_camera_space;
     normal = vec4(0,1,0,0)*base_transform;

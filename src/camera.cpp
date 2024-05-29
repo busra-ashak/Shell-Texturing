@@ -5,9 +5,12 @@
 #include "glm/ext/matrix_transform.hpp"
 #include <algorithm>
 
+// Converts world space to camera space
 glm::mat4 camera::get_view()
 {
     glm::mat4 translation_matrix = glm::translate(glm::identity<glm::mat4>(), position);
+
+    // Generate rotation matrix from euler angles
     glm::mat4 rotation_matrix = glm::mat4(1.0f); // Identity matrix
     rotation_matrix = glm::rotate(rotation_matrix, rotation.x, glm::vec3(1, 0, 0)); // Rotate around X axis (Pitch)
     rotation_matrix = glm::rotate(rotation_matrix, rotation.y, glm::vec3(0, 1, 0)); // Rotate around Y axis (Yaw)
@@ -15,6 +18,7 @@ glm::mat4 camera::get_view()
     return glm::inverse(rotation_matrix*translation_matrix);
 }
 
+// Converts camera space to clip space
 glm::mat4 camera::get_projection()
 {
     return glm::perspective(fov, aspect_ratio, near_clip, far_clip);

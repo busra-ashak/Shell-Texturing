@@ -11,6 +11,7 @@ renderer::renderer()
     shell_num = 10;
 }
 
+// Create and write the buffer datas to be used in the shader
 void renderer::setup()
 {
     cam_buffer = create_buffer(2*sizeof(glm::mat4), true);
@@ -44,6 +45,8 @@ void renderer::update()
     glm::mat4 temp[2];
     temp[0] = cam.get_view();
     temp[1] = cam.get_projection();
+
+    // update camera in case it has moved or rotated
     write_buffer(cam_buffer, temp, 2*sizeof(glm::mat4));
 }
 
