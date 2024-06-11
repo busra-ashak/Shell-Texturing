@@ -51,3 +51,7 @@ After generation, navigate into build/debug or build/release. There you can find
 ### Running
 
 The built shell executable must be ran such that the current working directory is the root directory of the project, otherwise you will receive shader failure errors.
+
+### Referencing
+
+You're welcome to use my work as long as you credit it. When you use this work, you can reference it by writing 'B. Ashak, DH2323 Shell Texturing, DGI24, KTH'.
